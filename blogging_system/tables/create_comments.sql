@@ -4,7 +4,7 @@ CREATE TABLE Comments (
 	article_id NUMBER NOT NULL,
 	comment_text CLOB,
 	comment_date DATE DEFAULT SYSDATE,
-	parent_comment NUMBER,
+	parent_comment NUMBER DEFAULT NULL,
 	comment_likes NUMBER DEFAULT 0,
 	comment_dislikes NUMBER DEFAULT 0,
 	--CONSTRAINT fk_user_id_comments FOREIGN KEY (user_id)

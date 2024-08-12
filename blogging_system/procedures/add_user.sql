@@ -7,10 +7,10 @@ CREATE OR REPLACE PROCEDURE add_user (
    p_profile_picture BLOB DEFAULT NULL,
    p_bio VARCHAR2 DEFAULT NULL,
    p_user_role VARCHAR2,
-   p_sex CHAR(1),
+   p_sex CHAR,
    p_birth_date DATE DEFAULT NULL
-)
-AS
+   )
+IS
 BEGIN
    INSERT INTO Users (
       user_id, 
@@ -35,10 +35,9 @@ BEGIN
       p_user_role,
       p_sex,
       p_birth_date
-     );
-
+      );
 EXCEPTION
    WHEN OTHERS THEN
-      RAISE_APPLICATION_ERROR(-20002, 'Ошибка добавления нового пользователя: ' || SQLERRM);
-END;
+      RAISE_APPLICATION_ERROR(-20002, 'Error adding a new user: ' || SQLERRM);
+END add_user;
 /
